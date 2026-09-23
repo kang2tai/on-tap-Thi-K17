@@ -2830,7 +2830,646 @@ h2.sec{font-size:13.5px;font-weight:600;color:var(--ink-soft);margin:26px 0 10px
 })();
 
 </script>
-<script src="quan-ly-su-thay-doi.js"></script>
+<script>
+/* =====================================================================
+   Ôn tập Đợt 5 – Chuyên đề QUẢN LÝ SỰ THAY ĐỔI (K17) – 80 câu
+   Nguồn DUY NHẤT: Tài liệu Chương trình đào tạo "Quản lý sự thay đổi"
+                   (Kingsman – BIDV, 2026), 66 slide.
+   Khối này CHỈ BỔ SUNG dữ liệu, không sửa dữ liệu cũ.
+   Vị trí: SAU khối window.LDQL_DATA, TRƯỚC khối script ứng dụng.
+   ===================================================================== */
+(function () {
+  var D = window.LDQL_DATA;
+  if (!D) { console.warn("[Dot5] Chua co LDQL_DATA"); return; }
+  D.subjects = D.subjects || [];
+  D.questions = D.questions || [];
+  D.batches = D.batches || [];
+
+  var BATCH = 13;
+  var GROUP = "d5";
+
+  var SUBJ = [
+    { id: "d5-tai-sao", name: "[QLTĐ] 1. Tại sao tổ chức phải thay đổi", group: GROUP, desc: "VUCA, áp lực thay đổi, quy luật sinh tồn, vì sao thất bại, thực tiễn kinh doanh" },
+    { id: "d5-tien-trinh", name: "[QLTĐ] 2. Tiến trình quản trị thay đổi", group: GROUP, desc: "Quyết định thay đổi, MIO, 7S McKinsey, Actors–Structures–Processes, Lewin, D×V×F>R" },
+    { id: "d5-dan-dat", name: "[QLTĐ] 3. Dẫn dắt quá trình thay đổi", group: GROUP, desc: "Phản kháng, khối băng tổ chức, 8 bước Kotter, tạo không khí thay đổi, đường cong phản ứng" },
+    { id: "d5-trich-dan", name: "[QLTĐ] 4. Trích dẫn & nhân vật", group: GROUP, desc: "Herodotus, Heraclitus, Darwin, Drucker, Kotter, Kaplan & Norton, Max De Pree…" }
+  ];
+
+  var QS = [];
+  function q(s, question, opts, ans, exp) {
+    QS.push({ s: s, q: question, o: opts, a: [ans], e: exp || "", b: BATCH });
+  }
+
+  /* ============ PHẦN 1: TẠI SAO CÁC TỔ CHỨC PHẢI THAY ĐỔI ============ */
+  var S = "d5-tai-sao";
+
+  q(S, "Theo tài liệu, ba nội dung lớn của chuyên đề Quản lý sự thay đổi lần lượt là:", [
+    ["A", "Nhận diện thay đổi – Lập kế hoạch – Đánh giá kết quả"],
+    ["B", "Tại sao các tổ chức phải thay đổi – Tiến trình quản trị thay đổi – Dẫn dắt quá trình thay đổi"],
+    ["C", "Thay đổi cá nhân – Thay đổi nhóm – Thay đổi tổ chức"],
+    ["D", "Phân tích môi trường – Xây dựng chiến lược – Triển khai chiến lược"]
+  ], "B", "Slide 'Nội dung chia sẻ' nêu rõ 3 phần: 01 Tại sao các tổ chức phải thay đổi; 02 Tiến trình quản trị thay đổi; 03 Dẫn dắt quá trình thay đổi.");
+
+  q(S, "VUCA là viết tắt của bốn đặc trưng nào?", [
+    ["A", "Value – Utility – Control – Accuracy"],
+    ["B", "Vision – Unity – Capability – Action"],
+    ["C", "Volatility (Biến động) – Uncertainty (Không chắc chắn) – Complexity (Phức tạp) – Ambiguity (Mơ hồ)"],
+    ["D", "Velocity – Urgency – Creativity – Adaptability"]
+  ], "C", "Slide 'Thế giới VUCA': V – Volatility (Biến động), U – Uncertainty (Không chắc chắn), C – Complexity (Phức tạp), A – Ambiguity (Mơ hồ).");
+
+  q(S, "Thuật ngữ VUCA xuất hiện từ khi nào và do ai sử dụng đầu tiên?", [
+    ["A", "Từ những năm 1990, do Quân đội Hoa Kỳ sử dụng để mô tả bối cảnh thế giới đa phương sau Chiến tranh Lạnh"],
+    ["B", "Từ những năm 1970, do Harvard Business Review đề xuất"],
+    ["C", "Từ năm 2000, do Diễn đàn Kinh tế Thế giới đưa ra"],
+    ["D", "Từ những năm 1980, do McKinsey sử dụng trong tư vấn chiến lược"]
+  ], "A", "Slide 'Thế giới VUCA' nêu: xuất hiện từ những năm 1990, do Quân đội Hoa Kỳ sử dụng để mô tả bối cảnh thế giới đa phương sau Chiến tranh Lạnh; ngày nay trở thành thuật ngữ phổ biến trong kinh doanh.");
+
+  q(S, "Theo slide 'Áp lực thay đổi', áp lực thay đổi đến từ sáu nguồn nào?", [
+    ["A", "Cổ đông, khách hàng, nhân viên, đối thủ, nhà nước, truyền thông"],
+    ["B", "Lực lượng lao động, Công nghệ, Các cú shock kinh tế, Cạnh tranh, Các xu hướng xã hội, Tình hình chính trị thế giới"],
+    ["C", "Lãi suất, tỷ giá, lạm phát, tăng trưởng, thất nghiệp, nợ công"],
+    ["D", "Con người, quy trình, công nghệ, dữ liệu, vốn, thương hiệu"]
+  ], "B", "Sơ đồ 'Áp lực thay đổi' gồm 6 nhánh: Lực lượng Lao động, Công nghệ, Các cú shock Kinh tế, Cạnh tranh, Các xu hướng Xã hội, Tình hình Chính trị thế giới.");
+
+  q(S, "Theo tài liệu, 'Thay đổi' được định nghĩa ngắn gọn là gì?", [
+    ["A", "Là quá trình tái cơ cấu tổ chức"],
+    ["B", "Là việc áp dụng công nghệ mới vào vận hành"],
+    ["C", "Là thay cái này bằng cái khác, là sự đổi khác, trở nên khác trước – hay đơn giản là 'làm cho khác đi'"],
+    ["D", "Là việc điều chỉnh chiến lược kinh doanh theo từng năm"]
+  ], "C", "Slide \"'Sự thay đổi' là gì?\": Thay đổi là thay cái này bằng cái khác, hay là sự đổi khác, trở nên khác trước, hay đơn giản thay đổi là 'làm cho khác đi'.");
+
+  q(S, "Theo tài liệu, 'Quản trị sự thay đổi' được định nghĩa là:", [
+    ["A", "Một cách tiếp cận có cấu trúc để đảm bảo các thay đổi được thực hiện triệt để và trôi tru, và quan trọng là những lợi ích lâu dài của việc thay đổi đã đạt được"],
+    ["B", "Việc ban hành các quyết định hành chính nhằm điều chỉnh cơ cấu tổ chức"],
+    ["C", "Quá trình kiểm soát chi phí phát sinh trong quá trình chuyển đổi"],
+    ["D", "Hoạt động truyền thông nội bộ nhằm giảm phản ứng của nhân viên"]
+  ], "A", "Slide \"'Sự thay đổi' là gì?\" nêu đúng định nghĩa này. Trọng tâm là các tác động rộng lớn của sự thay đổi, đặc biệt là về con người.");
+
+  q(S, "Slide 'Thái độ trước sự thay đổi' đối lập hai thái độ nào?", [
+    ["A", "Lạc quan và bi quan"],
+    ["B", "Chủ động và bị động"],
+    ["C", "Sự tự thoả mãn và Sự quyết đoán"],
+    ["D", "Tuân thủ và sáng tạo"]
+  ], "C", "Hình ảnh con ếch trong nồi nước: 'Sự tự thoả mãn' (an toàn trong vùng quen thuộc, không nhận ra rủi ro đang tăng dần) đối lập với 'Sự quyết đoán' (nhận diện thay đổi, hành động kịp thời, chủ động tạo ra kết quả).");
+
+  q(S, "Ba đặc điểm của sự thay đổi được nêu ở trung tâm slide 'Thái độ trước sự thay đổi' là:", [
+    ["A", "Nhanh – Mạnh – Bất ngờ"],
+    ["B", "Khó khăn – Phức tạp – Nhiều cảm xúc"],
+    ["C", "Tốn kém – Rủi ro – Dài hạn"],
+    ["D", "Cần thiết – Tất yếu – Liên tục"]
+  ], "B", "Ba yếu tố ở giữa slide là: Khó khăn, Phức tạp, Nhiều cảm xúc.");
+
+  q(S, "Slide 'Thực tiễn kinh doanh' nêu con số nào về tỷ lệ công ty còn hoạt động sau 05 năm đăng ký?", [
+    ["A", "20%"],
+    ["B", "30%"],
+    ["C", "40%"],
+    ["D", "50%"]
+  ], "A", "Slide 'Thực tiễn kinh doanh': 20% công ty còn hoạt động sau 05 năm đăng ký.");
+
+  q(S, "Slide 'Vì sao thất bại' chia nguyên nhân thất bại thành hai nhóm lớn nào?", [
+    ["A", "Nguyên nhân khách quan và nguyên nhân chủ quan"],
+    ["B", "Không thoát khỏi được quá khứ và Không có khả năng kiến tạo tương lai"],
+    ["C", "Thiếu vốn và thiếu nhân lực"],
+    ["D", "Sai chiến lược và sai thực thi"]
+  ], "B", "Slide 'Vì sao thất bại' chia 2 cột: 'Không thoát khỏi được quá khứ' (6 ý) và 'Không có khả năng kiến tạo tương lai' (6 ý).");
+
+  q(S, "Trong nhóm 'Không thoát khỏi được quá khứ', tài liệu KHÔNG nêu yếu tố nào sau đây?", [
+    ["A", "Có một quá khứ vinh quang"],
+    ["B", "Thoả mãn với những gì đã có được"],
+    ["C", "Dùng nguồn lực thay cho sự sáng tạo"],
+    ["D", "Quy trình hoạt động quá cứng nhắc"]
+  ], "D", "'Quy trình hoạt động quá cứng nhắc' thuộc nhóm 'Không có khả năng kiến tạo tương lai'. Nhóm 'Không thoát khỏi được quá khứ' gồm: quá khứ vinh quang; mọi ước muốn đều đạt được; thoả mãn với cái đã có; quá nhiều nguồn lực dư thừa; chỉ dựa vào nguồn lực vật chất; dùng nguồn lực thay cho sự sáng tạo.");
+
+  q(S, "Trường hợp Nissan được nêu trong tài liệu với các con số nào?", [
+    ["A", "Thoát khoản nợ $10 tỷ, cắt giảm 10.000 nhân viên"],
+    ["B", "Thoát khoản nợ $20 tỷ, cắt giảm 21.000 nhân viên tương đương 15% biên chế, sau hai năm tăng trưởng 10,8%"],
+    ["C", "Thoát khoản nợ $30 tỷ, cắt giảm 30.000 nhân viên"],
+    ["D", "Thoát khoản nợ $5 tỷ, cắt giảm 5% biên chế"]
+  ], "B", "Slide 'Làm sao để tổ chức tồn tại?': thoát khoản nợ khổng lồ $20 tỷ; áp dụng các biện pháp giảm chi phí; cắt giảm 21.000 nhân viên – 15% biên chế; sau hai năm công ty tăng trưởng 10,8%; doanh thu đứng thứ 5, lợi nhuận cao nhất trong ngành ô tô.");
+
+  q(S, "Theo slide 'Yêu cầu với các tổ chức', nhiều doanh nghiệp thất bại là do nguyên nhân nào, với ví dụ là Nokia, IBM, Texas Instruments?", [
+    ["A", "Do thiếu vốn đầu tư cho nghiên cứu phát triển"],
+    ["B", "Do áp dụng kinh nghiệm thành công trong quá khứ"],
+    ["C", "Do mở rộng quá nhanh ra thị trường quốc tế"],
+    ["D", "Do không kiểm soát được chi phí vận hành"]
+  ], "B", "Slide nêu: 'Nhiều doanh nghiệp thất bại là do áp dụng kinh nghiệm thành công trong quá khứ: Nokia, IBM, Texas Instruments,…'");
+
+  q(S, "Theo slide 'Yêu cầu với các tổ chức', tỷ lệ các công ty thành đạt đã trải qua ít nhất một cuộc thay đổi lớn là bao nhiêu và chu kỳ chủ động thay đổi trung bình là bao lâu?", [
+    ["A", "50%, trung bình 3-4 năm một chu kỳ"],
+    ["B", "60%, trung bình 5-6 năm một chu kỳ"],
+    ["C", "75%, trung bình 7-8 năm một chu kỳ"],
+    ["D", "90%, trung bình 10 năm một chu kỳ"]
+  ], "C", "Slide nêu: '75% các công ty thành đạt đã trải qua ít nhất một cuộc thay đổi lớn, trung bình 7-8 năm một chu kỳ chủ động thay đổi.'");
+
+  q(S, "Slide 'Khi nào cần thay đổi' nêu bốn dấu hiệu. Dấu hiệu số 01 là gì?", [
+    ["A", "Quyết sách chậm chạp, lỡ mất cơ hội"],
+    ["B", "Trao đổi thông tin gặp khó khăn"],
+    ["C", "Chức năng chủ yếu không phát huy được kết quả"],
+    ["D", "Thiếu ý tưởng sáng tạo và đổi mới"]
+  ], "A", "Bốn dấu hiệu theo thứ tự: 01 Quyết sách chậm chạp, lỡ mất cơ hội; 02 Trao đổi thông tin gặp khó khăn; 03 Chức năng chủ yếu không phát huy được kết quả; 04 Thiếu ý tưởng sáng tạo và đổi mới.");
+
+  q(S, "Slide 'Tổ chức phải đối mặt' nêu ba đặc điểm của môi trường tổ chức thay đổi. Ý nào KHÔNG thuộc nhóm này?", [
+    ["A", "Quá trình tái cơ cấu, liên kết sáp nhập, đổi mới qui trình và công nghệ"],
+    ["B", "Phần thưởng cho các công ty lãnh đạo tốt và sự trừng phạt các công ty yếu kém"],
+    ["C", "Nhân viên ngày càng không hài lòng với công việc và cấp trên"],
+    ["D", "Ngân sách đầu tư công nghệ ngày càng bị cắt giảm"]
+  ], "D", "Slide 'Tổ chức phải đối mặt' chỉ nêu 3 ý: tái cơ cấu/sáp nhập/đổi mới quy trình và công nghệ; phần thưởng cho công ty lãnh đạo tốt và trừng phạt công ty yếu kém; nhân viên ngày càng không hài lòng với công việc và cấp trên.");
+
+  q(S, "Slide 'Thay đổi mô thức kinh doanh' đối lập kỷ nguyên công nghiệp và kỷ nguyên thông tin. Cặp nào sau đây là ĐÚNG?", [
+    ["A", "Sự thay đổi → Sự cố định"],
+    ["B", "Sự kiểm soát → Sự ủy quyền"],
+    ["C", "Sự hợp tác → Sự cạnh tranh"],
+    ["D", "Sự đa dạng → Sự đồng nhất"]
+  ], "B", "Kỷ nguyên công nghiệp: Sự cố định, Sự kiểm soát, Sự cạnh tranh, Công việc, Sự đồng nhất. Kỷ nguyên thông tin: Sự thay đổi, Sự ủy quyền, Sự hợp tác, Con người & các mối quan hệ, Sự đa dạng.");
+
+  q(S, "Trong slide 'Bản chất công việc quản lý là quản lý thay đổi', yêu cầu nào sau đây KHÔNG được nêu?", [
+    ["A", "Không ngại thay đổi"],
+    ["B", "Bắt kịp với công nghệ"],
+    ["C", "Biết rõ khách hàng muốn gì"],
+    ["D", "Tối đa hóa lợi nhuận ngắn hạn"]
+  ], "D", "Slide nêu 6 yêu cầu: Không ngại thay đổi; Bắt kịp với công nghệ; Biết rõ khách hàng muốn gì; Giao tiếp hiệu quả trong môi trường đa dạng; Chấp nhận sự toàn cầu hóa; Trở thành một hình mẫu, một tấm gương.");
+
+
+
+  /* ============ PHẦN 2: TIẾN TRÌNH QUẢN TRỊ THAY ĐỔI ============ */
+  S = "d5-tien-trinh";
+
+  q(S, "Slide 'Quyết định thay đổi' nêu ba bước theo thứ tự nào?", [
+    ["A", "Lựa chọn chiến lược → Hiện trạng → Xu thế tương lai"],
+    ["B", "Hiện trạng → Xu thế tương lai → Lựa chọn chiến lược"],
+    ["C", "Xu thế tương lai → Hiện trạng → Lựa chọn chiến lược"],
+    ["D", "Hiện trạng → Lựa chọn chiến lược → Xu thế tương lai"]
+  ], "B", "Ba bước theo thứ tự trên slide: HIỆN TRẠNG → XU THẾ TƯƠNG LAI → LỰA CHỌN CHIẾN LƯỢC.");
+
+  q(S, "Mô hình MIO dành cho nhà quản lý soi chiếu theo ba chiều nào?", [
+    ["A", "Mission – Impact – Outcome"],
+    ["B", "Management – Innovation – Operation"],
+    ["C", "Market – Interaction – Organization"],
+    ["D", "Money – Information – Output"]
+  ], "C", "Bảng MIO có 3 cột: MARKET, INTERACTION, ORGANIZATION; giao với 3 hàng: Hiện trạng, Xu thế tương lai, Lựa chọn chiến lược.");
+
+  q(S, "Theo sơ đồ 'Thay đổi cái gì?', nút thắt bên trong tổ chức nằm ở ba nhóm nào?", [
+    ["A", "Threats – Opportunities – Pressure"],
+    ["B", "Actors – Structures – Processes"],
+    ["C", "Strategy – Structure – Systems"],
+    ["D", "People – Profit – Planet"]
+  ], "B", "Sơ đồ: Threats và Opportunities tạo ra ÁP LỰC; NÚT THẮT bên trong đến từ ACTORS (con người), STRUCTURES (cấu trúc), PROCESSES (quy trình); từ đó trả lời câu hỏi 'Can thiệp cái gì?'.");
+
+  q(S, "Theo slide 'Thay đổi = Thất bại?', Kotter chỉ ra bao nhiêu phần trăm công cuộc tái cơ cấu thất bại?", [
+    ["A", "50%"],
+    ["B", "60%"],
+    ["C", "70%"],
+    ["D", "80%"]
+  ], "C", "Slide nêu: '70% công cuộc tái cơ cấu thất bại (Kotter)', đi kèm thông điệp 'CHANGE OR DIE'.");
+
+  q(S, "Theo nghiên cứu của Kaplan & Norton được dẫn trong tài liệu, tỷ lệ nhân viên hiểu biết về chiến lược công ty mình đang làm việc là:", [
+    ["A", "Dưới 10%"],
+    ["B", "Khoảng 25%"],
+    ["C", "Khoảng 40%"],
+    ["D", "Trên 50%"]
+  ], "A", "Slide 'Tại sao?': 'Dưới 10% nhân viên hiểu biết về chiến lược công ty mà họ đang làm việc (Kaplan & Norton)'.");
+
+  q(S, "Nhận định 'Người ta thường đánh giá cao những gì đang có và đánh giá thấp những gì đạt được sau khi từ bỏ cái đang có' là của ai?", [
+    ["A", "Kaplan & Norton"],
+    ["B", "Belasco & Stayer"],
+    ["C", "Kotter"],
+    ["D", "Lewin"]
+  ], "B", "Slide 'Tại sao?' ghi rõ nhận định này thuộc về Belasco & Stayer.");
+
+  q(S, "Khái niệm 'Tuyệt vọng tích tụ' trong tài liệu được diễn giải như thế nào?", [
+    ["A", "Nếu từng nỗ lực mà thất bại, người ta không còn muốn nỗ lực nữa, vì tin rằng mọi nỗ lực đều dẫn tới thất bại"],
+    ["B", "Khi khó khăn kéo dài, tổ chức mất dần nguồn lực tài chính"],
+    ["C", "Khi lãnh đạo thay đổi liên tục, nhân viên mất phương hướng"],
+    ["D", "Khi thị trường suy giảm, doanh nghiệp buộc phải cắt giảm nhân sự"]
+  ], "A", "Slide 'Tuyệt vọng tích tụ' nêu nguyên văn: 'Nếu từng nỗ lực mà thất bại, người ta không còn muốn nỗ lực nữa, họ rằng mọi nỗ lực đều dẫn tới thất bại'.");
+
+  q(S, "Theo tài liệu, quản trị sự thay đổi KHÔNG phải là:", [
+    ["A", "Giải quyết sự chán nản của nhân viên và làm sao để nhân viên khỏi thất vọng"],
+    ["B", "Chuyển tổ chức từ tình trạng hiện tại sang viễn cảnh mong muốn"],
+    ["C", "Tạo khác biệt về năng suất hiệu quả và tinh thần làm việc"],
+    ["D", "Một cách tiếp cận có cấu trúc"]
+  ], "A", "Slide 'Quản trị sự thay đổi không phải là…' nêu đúng 2 ý: giải quyết sự chán nản của nhân viên; làm sao để nhân viên khỏi thất vọng. Slide kế tiếp 'Mà là…' mới nêu bản chất thực sự.");
+
+  q(S, "Theo slide 'Mà là…', quản trị sự thay đổi thực chất là chuyển tổ chức từ đâu đến đâu, tạo ra khác biệt về điều gì?", [
+    ["A", "Từ quy mô nhỏ sang quy mô lớn, khác biệt về thị phần"],
+    ["B", "Từ tình trạng hiện tại sang viễn cảnh tổ chức mong muốn, khác biệt về năng suất hiệu quả và tinh thần làm việc"],
+    ["C", "Từ mô hình truyền thống sang mô hình số, khác biệt về công nghệ"],
+    ["D", "Từ cơ cấu cũ sang cơ cấu mới, khác biệt về chi phí"]
+  ], "B", "Slide 'Mà là…': TÌNH TRẠNG HIỆN TẠI → VIỄN CẢNH TỔ CHỨC MONG MUỐN, với ghi chú 'Khác biệt về năng suất hiệu quả và tinh thần làm việc'.");
+
+  q(S, "Mô hình 7S của McKinsey phân chia bảy yếu tố thành hai nhóm. Nhóm 'Hard Ss' gồm:", [
+    ["A", "Strategy – Structure – Systems"],
+    ["B", "Skills – Style – Staff"],
+    ["C", "Shared Values – Skills – Systems"],
+    ["D", "Strategy – Staff – Style"]
+  ], "A", "Sơ đồ 7S: Hard Ss gồm Strategy, Structure, Systems; Soft Ss gồm Shared Values, Skills, Style, Staff.");
+
+  q(S, "Trong mô hình 7S của McKinsey, yếu tố nào nằm ở vị trí TRUNG TÂM của sơ đồ?", [
+    ["A", "Strategy"],
+    ["B", "Structure"],
+    ["C", "Shared Values"],
+    ["D", "Staff"]
+  ], "C", "Trong sơ đồ 7S, Shared Values (giá trị chia sẻ) được đặt ở trung tâm, kết nối với cả sáu yếu tố còn lại.");
+
+  q(S, "Câu hỏi được đặt ra ở cuối slide 'Thay đổi cấu trúc để tạo dựng giá trị' là:", [
+    ["A", "Thay đổi chỉ đơn giản là cấu trúc?"],
+    ["B", "Ai chịu trách nhiệm cho sự thay đổi?"],
+    ["C", "Khi nào nên dừng thay đổi?"],
+    ["D", "Chi phí của thay đổi là bao nhiêu?"]
+  ], "A", "Slide kết thúc bằng câu hỏi: 'Thay đổi chỉ đơn giản là cấu trúc?' – dẫn sang mô hình 7S, nhấn mạnh mục đích cuối cùng là thay đổi quá trình tạo dựng giá trị (value added).");
+
+  q(S, "Slide 'Đặc điểm thay đổi tổ chức' nêu năm đặc điểm. Đặc điểm số 05 là gì?", [
+    ["A", "Khó"],
+    ["B", "Tốn thời gian"],
+    ["C", "Động chạm văn hóa"],
+    ["D", "Thay đổi quá trình tạo dựng giá trị"]
+  ], "D", "Năm đặc điểm theo thứ tự: 01 Khó; 02 Tốn thời gian; 03 Đòi hỏi tư duy; 04 Động chạm văn hóa; 05 Thay đổi quá trình tạo dựng giá trị.");
+
+  q(S, "Sơ đồ 'Thay đổi tổ chức' đặt 'NHIỆM VỤ THÁCH THỨC' ở trung tâm, xung quanh là năm nhóm yếu tố. Nhóm 'HỆ THỐNG' bao gồm:", [
+    ["A", "Nhân lực, Sản xuất, Kế toán, Kinh doanh"],
+    ["B", "Kết cấu nhóm, Cấp bậc, Cấu trúc"],
+    ["C", "Giá trị, Chuẩn mực, Hành vi"],
+    ["D", "Chuyên môn kỹ thuật, Năng lực lãnh đạo"]
+  ], "A", "Sơ đồ: TẦM NHÌN (các mục tiêu chiến lược); HỆ THỐNG (Nhân lực, Sản xuất, Kế toán, Kinh doanh); VĂN HÓA (Giá trị, Chuẩn mực, Hành vi); CƠ CẤU (Kết cấu nhóm, Cấp bậc, Cấu trúc); NĂNG LỰC (Chuyên môn kỹ thuật, Năng lực lãnh đạo).");
+
+  q(S, "Slide 'Thách thức' nêu bốn nhóm khó khăn chủ yếu khi thực hiện sự thay đổi. Nhóm nào được mô tả là 'do tổ chức bị trì trệ, không chịu thay đổi'?", [
+    ["A", "Khó khăn về nhận thức"],
+    ["B", "Khó khăn về tổ chức"],
+    ["C", "Khó khăn về động lực"],
+    ["D", "Khó khăn về nguồn lực"]
+  ], "A", "Bốn nhóm: Khó khăn về nhận thức (do tổ chức bị trì trệ, không chịu thay đổi); Khó khăn về tổ chức (sự phản đối từ những người không ủng hộ); Khó khăn về động lực (nhân viên không được khuyến khích thay đổi); Khó khăn về nguồn lực (sự hạn chế của các nguồn lực cho đổi mới).");
+
+  q(S, "Mô hình thay đổi của Lewin được trình bày trong tài liệu gồm các giai đoạn nào?", [
+    ["A", "Hiện tại → Tan băng → Dịch chuyển → Tái đóng"],
+    ["B", "Chuẩn bị → Triển khai → Đánh giá"],
+    ["C", "Nhận thức → Mong muốn → Kiến thức → Khả năng → Củng cố"],
+    ["D", "Cấp thiết → Liên minh → Viễn cảnh → Thể chế hóa"]
+  ], "A", "Slide 'Tiến trình thay đổi': HIỆN TẠI → TAN BẰNG → DỊCH CHUYỂN → TÁI ĐÓNG, ghi chú 'Mô hình thay đổi của Lewin'.");
+
+  q(S, "Theo biểu đồ trong tài liệu, thay đổi trong tổ chức diễn ra khi nào?", [
+    ["A", "Khi áp lực thay đổi gia tăng, sự phản đối giảm xuống, và hai quá trình này diễn ra đồng thời"],
+    ["B", "Khi lãnh đạo ban hành quyết định chính thức"],
+    ["C", "Khi toàn bộ nhân viên đồng thuận"],
+    ["D", "Khi tổ chức có đủ nguồn lực tài chính"]
+  ], "A", "Ô chú thích trên biểu đồ nêu 3 điều kiện: Áp lực thay đổi gia tăng; Sự phản đối giảm xuống; Hai quá trình này diễn ra đồng thời – khi đó tổ chức dịch chuyển từ P1 lên P2.");
+
+  q(S, "Công thức điều kiện để sự thay đổi diễn ra được nêu trong tài liệu là:", [
+    ["A", "D + V + F > R"],
+    ["B", "D × V × F > R"],
+    ["C", "D × V > F + R"],
+    ["D", "V × F > D × R"]
+  ], "B", "Slide 'Sự thay đổi diễn ra' nêu công thức: D x V x F > R.");
+
+  q(S, "Trong công thức D × V × F > R, ký hiệu V và F lần lượt là:", [
+    ["A", "V = giá trị cốt lõi; F = nguồn lực tài chính"],
+    ["B", "V = viễn cảnh tương lai tốt đẹp hơn các mất mát hiện tại; F = kết quả bước chuyển đầu tiên"],
+    ["C", "V = tốc độ thay đổi; F = tần suất triển khai"],
+    ["D", "V = tầm nhìn dài hạn; F = phản hồi của nhân viên"]
+  ], "B", "V = viễn cảnh tương lai tốt đẹp hơn các mất mát hiện tại; F = kết quả bước chuyển đầu tiên (First steps).");
+
+  q(S, "Trong công thức D × V × F > R, ký hiệu R đại diện cho:", [
+    ["A", "Rủi ro của quá trình thay đổi"],
+    ["B", "Kết quả (Result) của thay đổi"],
+    ["C", "Sự phản đối thay đổi"],
+    ["D", "Nguồn lực (Resource) cần huy động"]
+  ], "C", "R = sự phản đối thay đổi (Resistance). Tích D × V × F phải lớn hơn R thì thay đổi mới diễn ra.");
+
+  q(S, "Ý nghĩa quan trọng của việc công thức sử dụng phép NHÂN (D × V × F) thay vì phép cộng là gì?", [
+    ["A", "Chỉ cần một trong ba yếu tố đủ mạnh là thay đổi sẽ diễn ra"],
+    ["B", "Nếu bất kỳ yếu tố nào trong ba yếu tố bằng 0 thì tích bằng 0, thay đổi không thể vượt qua được sự phản đối"],
+    ["C", "Ba yếu tố có thể bù trừ hoàn toàn cho nhau"],
+    ["D", "Thứ tự của ba yếu tố quyết định kết quả"]
+  ], "B", "Đây là hệ quả logic trực tiếp của công thức D x V x F > R được trình bày trong tài liệu: thiếu bất kỳ yếu tố nào (D, V hoặc F) thì tích bằng 0 và không thể lớn hơn R.");
+
+  /* ============ PHẦN 3: DẪN DẮT QUÁ TRÌNH THAY ĐỔI ============ */
+  S = "d5-dan-dat";
+
+  q(S, "Hình ảnh 'Khối băng tổ chức' phân chia tổ chức thành hai phần. PHẦN NỔI (dễ nhìn thấy) gồm:", [
+    ["A", "Niềm tin, cảm nhận, quan niệm, thái độ"],
+    ["B", "Mục tiêu, công nghệ, cơ cấu, chính sách, quy trình, nguồn lực"],
+    ["C", "Giá trị, chuẩn mực nhóm, truyền thống, lịch sử"],
+    ["D", "Kinh nghiệm, văn hóa tổ chức"]
+  ], "B", "Phần nổi (dễ nhìn thấy): Mục tiêu, công nghệ, cơ cấu, chính sách, quy trình, nguồn lực. Phần chìm (khó nhìn thấy): Niềm tin, cảm nhận, quan niệm, thái độ, giá trị, chuẩn mực nhóm, truyền thống, lịch sử, kinh nghiệm, văn hóa tổ chức.");
+
+  q(S, "Câu nói được in ở cuối slide 'Khối băng tổ chức' là:", [
+    ["A", "Các con tàu bị đắm bởi những gì thuyền trưởng không nhìn thấy"],
+    ["B", "Không ai tắm hai lần trên một dòng sông"],
+    ["C", "Thay đổi hay là chết"],
+    ["D", "Hiểu sâu để hành động đúng"]
+  ], "A", "Ô vàng cuối slide ghi: 'Các con tàu bị đắm bởi những gì thuyền trưởng không nhìn thấy' – nhấn mạnh tầm quan trọng của phần chìm.");
+
+  q(S, "Slide 'Phản ứng thường gặp' liệt kê những câu nói quen thuộc khi triển khai thay đổi. Câu nào KHÔNG có trong danh sách?", [
+    ["A", "Chúng tôi đã thử điều đó…"],
+    ["B", "Lý thuyết quá!"],
+    ["C", "Tiền đâu ra?"],
+    ["D", "Việc này cần thêm thời gian nghiên cứu"]
+  ], "D", "Danh sách gồm: 'Chúng tôi đã thử điều đó…'; 'Lý thuyết quá!'; 'Tiền đâu ra?'; 'Đó không phải trách nhiệm của chị!'; 'Cấp trên không đồng ý đâu…'; 'Tại sao lại phải thay đổi khi đã quen với công việc cũ?'");
+
+  q(S, "Theo slide 'Nguồn gốc của sự phản kháng' ở cấp CÁ NHÂN, yếu tố nào sau đây được nêu?", [
+    ["A", "Tính ì của chuẩn mực nhóm"],
+    ["B", "Sợ những điều chưa biết"],
+    ["C", "Sợ thay đổi phân chia các nguồn lực"],
+    ["D", "Tính ì trong cấu trúc"]
+  ], "B", "Nguồn gốc phản kháng ở CÁ NHÂN gồm: cảm nhận thiếu kỹ năng mới và mất đi các kỹ năng cũ; mất nền tảng quyền lực; sợ những điều chưa biết; mất quyền lợi; không thích sự bất ổn và không rõ ràng.");
+
+  q(S, "Nguồn gốc của sự phản kháng ở cấp TỔ CHỨC KHÔNG bao gồm yếu tố nào sau đây?", [
+    ["A", "Sợ mất quyền lực của bộ phận"],
+    ["B", "Tính ì của chuẩn mực nhóm"],
+    ["C", "Tính ì của văn hóa"],
+    ["D", "Sợ những điều chưa biết"]
+  ], "D", "'Sợ những điều chưa biết' thuộc nhóm CÁ NHÂN. Nhóm TỔ CHỨC gồm: sợ mất quyền lực của bộ phận; sợ thay đổi phân chia các nguồn lực; tính ì của chuẩn mực nhóm; tính ì trong cấu trúc; tính ì của văn hóa; các quyền lợi gắn kết.");
+
+  q(S, "Slide 'Thái độ kháng cự thay đổi' nêu bốn lý do khiến người lao động kháng cự. Lý do nào sau đây được nêu?", [
+    ["A", "Không được tham gia vào tiến trình lập kế hoạch"],
+    ["B", "Không có đủ thời gian làm quen với công nghệ"],
+    ["C", "Không được tăng lương tương ứng"],
+    ["D", "Không có người hướng dẫn cụ thể"]
+  ], "A", "Bốn thái độ kháng cự: Không nhận ra thay đổi mang lại lợi ích gì? Không biết rõ cái giá phải trả để đạt được lợi ích; Không được tham gia vào tiến trình lập kế hoạch; Không tin tưởng vào người thiết kế thay đổi.");
+
+  q(S, "Theo slide 'Khía cạnh tích cực', thay đổi mang lại sáu điều cho người lao động. Điều số 06 là gì?", [
+    ["A", "Cơ hội được trao quyền"],
+    ["B", "Thay đổi cũng là một thử thách"],
+    ["C", "Cơ hội tiếp thu kỹ năng mới"],
+    ["D", "Góc nhìn mới mẻ về công việc"]
+  ], "A", "Sáu khía cạnh tích cực: 01 Thay đổi đem lại những hứng thú mới trong công việc; 02 Mở ra triển vọng phát triển nghề nghiệp; 03 Góc nhìn mới mẻ về công việc; 04 Cơ hội tiếp thu kỹ năng mới; 05 Thay đổi cũng là một thử thách; 06 Cơ hội được trao quyền.");
+
+  q(S, "Slide 'Bạn là ai?' đối lập 'Người thắng' và 'Kẻ thua'. Câu nói đặc trưng của NGƯỜI THẮNG là:", [
+    ["A", "Có thể làm nhưng hình như quá khó"],
+    ["B", "Đó không phải là việc của tôi"],
+    ["C", "Có thể hơi khó nhưng vẫn có thể làm"],
+    ["D", "Để tôi xem lại đã"]
+  ], "C", "Người thắng: 'Có thể hơi khó nhưng vẫn có thể làm'. Kẻ thua: 'Có thể làm nhưng hình như quá khó'.");
+
+  q(S, "Slide 'Khen thưởng và động viên' nêu ba nội dung. Nội dung nào sau đây KHÔNG được nêu?", [
+    ["A", "Kế hoạch trả lương theo hiệu suất công tác"],
+    ["B", "Khen thưởng cho các mục tiêu thay đổi được thực hiện"],
+    ["C", "Thay đổi chế độ trả lương theo năng lực, thu hút và duy trì người tài"],
+    ["D", "Tăng phúc lợi đồng đều cho toàn bộ nhân viên"]
+  ], "D", "Slide chỉ nêu 3 nội dung: kế hoạch trả lương theo hiệu suất công tác; khen thưởng cho các mục tiêu thay đổi được thực hiện; thay đổi chế độ trả lương theo năng lực, thu hút và duy trì người tài.");
+
+  q(S, "Slide 'Tạo không khí thay đổi' nêu 08 biện pháp. Biện pháp số 01 là gì?", [
+    ["A", "Chia sẻ thông tin"],
+    ["B", "Đẩy trách nhiệm ra quyết định xuống các cấp thấp"],
+    ["C", "Giao tiếp hai chiều: nói và lắng nghe"],
+    ["D", "Giúp mọi người đẩy lùi nỗi sợ hãi"]
+  ], "B", "08 biện pháp: 01 Đẩy trách nhiệm ra quyết định xuống các cấp thấp; 02 Chia sẻ thông tin; 03 Giao tiếp hai chiều: nói và lắng nghe; 04 Loại bỏ cách biệt: đi lại, nghỉ ngơi, vui chơi, ăn uống; 05 Tham gia làm việc cùng với cấp dưới; 06 Tạo điều kiện cho các nhóm trao đổi ý kiến và hợp tác; 07 Giúp mọi người hiểu được tại sao phải thay đổi; 08 Giúp mọi người đẩy lùi nỗi sợ hãi.");
+
+  q(S, "Câu nói 'Bất cứ khi nào có sự thay đổi, khi đó sẽ có cơ hội' là của ai?", [
+    ["A", "Peter Drucker"],
+    ["B", "John Kotter"],
+    ["C", "Jack Welch – CEO, GE"],
+    ["D", "Max De Pree"]
+  ], "C", "Slide 'Quản lý quá trình' trích dẫn Jack Welch – CEO, GE.");
+
+  q(S, "Kế hoạch lãnh đạo sự thay đổi trong tài liệu gồm bao nhiêu bước?", [
+    ["A", "5 bước"],
+    ["B", "6 bước"],
+    ["C", "8 bước"],
+    ["D", "10 bước"]
+  ], "C", "Sơ đồ 'Kế hoạch lãnh đạo sự thay đổi' gồm 8 bước, theo mô hình Kotter.");
+
+  q(S, "Bước 1 trong kế hoạch lãnh đạo sự thay đổi là:", [
+    ["A", "Tạo liên minh cho thay đổi"],
+    ["B", "Tính cấp thiết của sự thay đổi"],
+    ["C", "Hoạch định viễn cảnh"],
+    ["D", "Truyền thông viễn cảnh"]
+  ], "B", "8 bước: 1. Tính cấp thiết của sự thay đổi; 2. Tạo liên minh cho thay đổi; 3. Hoạch định viễn cảnh; 4. Truyền thông viễn cảnh; 5. Ủy quyền cho người thực hiện; 6. Kế hoạch tạo ra các thắng lợi bước đầu; 7. Củng cố các kết quả đạt được; 8. Chuyển thành văn hoá tổ chức.");
+
+  q(S, "Thứ tự đúng của các bước 4, 5, 6 trong kế hoạch lãnh đạo sự thay đổi là:", [
+    ["A", "Truyền thông viễn cảnh → Ủy quyền cho người thực hiện → Kế hoạch tạo ra các thắng lợi bước đầu"],
+    ["B", "Ủy quyền → Truyền thông viễn cảnh → Củng cố kết quả"],
+    ["C", "Hoạch định viễn cảnh → Truyền thông viễn cảnh → Ủy quyền"],
+    ["D", "Kế hoạch thắng lợi bước đầu → Ủy quyền → Truyền thông viễn cảnh"]
+  ], "A", "Bước 4: Truyền thông viễn cảnh; Bước 5: Ủy quyền cho người thực hiện; Bước 6: Kế hoạch tạo ra các thắng lợi bước đầu.");
+
+  q(S, "Theo slide '1. Tính cấp thiết', bước này cần tập trung vào điều gì?", [
+    ["A", "Các nguy cơ tiềm ẩn và các cơ hội mở ra"],
+    ["B", "Các chỉ tiêu tài chính chưa đạt"],
+    ["C", "Danh sách nhân sự cần điều chuyển"],
+    ["D", "Ngân sách dành cho chuyển đổi"]
+  ], "A", "Slide nêu: tập trung vào các nguy cơ tiềm ẩn và các cơ hội mở ra; truyền thông rộng rãi và thường xuyên trên các kênh khác nhau.");
+
+  q(S, "Theo slide '1. Tính cấp thiết', thất bại ở bước này thường có nguyên nhân từ đội ngũ quản lý. Nguyên nhân nào sau đây KHÔNG được nêu?", [
+    ["A", "Có bức xúc nhưng ngại hành động"],
+    ["B", "Không hiểu thay đổi cần cả sự quản lý lẫn sự lãnh đạo"],
+    ["C", "Lo sợ vì chỉ nhìn những mặt tiêu cực của thay đổi"],
+    ["D", "Thiếu kinh nghiệm quản lý dự án"]
+  ], "D", "Bốn nguyên nhân được nêu: có bức xúc nhưng ngại hành động; không hiểu thay đổi cần cả sự quản lý lẫn sự lãnh đạo; lo sợ vì chỉ nhìn những mặt tiêu cực của thay đổi; cố thoả hiệp với thực tại.");
+
+  q(S, "Theo slide '2. Tạo liên minh', liên minh cho thay đổi cần tập hợp những cán bộ như thế nào?", [
+    ["A", "Những cán bộ có thâm niên cao nhất"],
+    ["B", "Những cán bộ có năng lực: chuyên môn, uy tín, có ảnh hưởng"],
+    ["C", "Đại diện đầy đủ của tất cả các phòng ban"],
+    ["D", "Những cán bộ trẻ, nhiệt huyết"]
+  ], "B", "Slide nêu: tập hợp những cán bộ có năng lực: chuyên môn, uy tín, có ảnh hưởng; lãnh đạo luôn đứng ở vị trí trung tâm.");
+
+  q(S, "Theo slide '2. Tạo liên minh', nguyên nhân thất bại nào sau đây được nêu?", [
+    ["A", "Đánh giá thấp sự khó khăn của dự án, nên không xây dựng liên minh đủ mạnh"],
+    ["B", "Liên minh có quá nhiều thành viên"],
+    ["C", "Thiếu ngân sách hoạt động cho liên minh"],
+    ["D", "Liên minh không được cấp trên phê duyệt"]
+  ], "A", "Ba nguyên nhân thất bại: đánh giá thấp sự khó khăn của dự án nên không xây dựng liên minh đủ mạnh; lãnh đạo thiếu kinh nghiệm làm việc nhóm; để nhân viên trẻ thiếu năng lực lãnh đạo.");
+
+  q(S, "Theo slide '3. Hoạch định viễn cảnh', viễn cảnh được định nghĩa là gì?", [
+    ["A", "Bản kế hoạch chi tiết các công việc cần làm"],
+    ["B", "Hình ảnh tổ chức hướng tới trong tương lai: dễ dàng truyền thông"],
+    ["C", "Danh mục chỉ tiêu tài chính của giai đoạn tới"],
+    ["D", "Cam kết của lãnh đạo với cổ đông"]
+  ], "B", "Slide nêu: viễn cảnh là hình ảnh tổ chức hướng tới trong tương lai, dễ dàng truyền thông; và cần có khả năng thu hút nhân viên, các nhóm, khách hàng và các bên hữu quan.");
+
+  q(S, "Theo slide '4. Truyền lửa', câu nào được nhấn mạnh về sự nhất quán của người quản lý?", [
+    ["A", "Không gì có sức phá hoại bằng người quản lý nói một đằng làm một nẻo"],
+    ["B", "Người quản lý phải luôn giữ khoảng cách với nhân viên"],
+    ["C", "Người quản lý cần hạn chế truyền thông để tránh hiểu nhầm"],
+    ["D", "Người quản lý nên để cấp dưới tự tìm hiểu"]
+  ], "A", "Slide '4. Truyền lửa' kết thúc bằng: 'Không gì có sức phá hoại bằng người quản lý nói một đằng làm một nẻo'.");
+
+  q(S, "Theo slide '4. Truyền lửa', nhận định nào về quyền lợi của nhân viên được nêu?", [
+    ["A", "Nhân viên luôn sẵn sàng hy sinh quyền lợi vì mục tiêu chung"],
+    ["B", "Các nhân viên sẽ không chấp nhận 'hy sinh' quyền lợi ngay cả khi họ không bằng lòng với thực tại"],
+    ["C", "Quyền lợi nhân viên không ảnh hưởng đến quá trình thay đổi"],
+    ["D", "Chỉ cần tăng lương là nhân viên sẽ ủng hộ thay đổi"]
+  ], "B", "Slide nêu rõ ý này ở ô đầu tiên, cùng với yêu cầu 'Lãnh đạo phải là tấm gương cho các giá trị mới'.");
+
+  q(S, "Nội dung số 05 của bước 'Ủy quyền' nhấn mạnh điều gì?", [
+    ["A", "Xây dựng tinh thần chấp nhận rủi ro, nhưng không giảm sự giám sát"],
+    ["B", "Giao toàn quyền và bỏ hoàn toàn cơ chế giám sát"],
+    ["C", "Chỉ ủy quyền cho cán bộ lâu năm"],
+    ["D", "Ủy quyền bằng miệng để linh hoạt"]
+  ], "A", "Đây là điểm mấu chốt phân biệt ủy quyền với buông lỏng: chấp nhận rủi ro nhưng KHÔNG giảm sự giám sát.");
+
+  q(S, "Bảng so sánh Lewin – Kotter trong tài liệu ghép các bước của Kotter vào giai đoạn 'Làm tan băng' của Lewin gồm những bước nào?", [
+    ["A", "Tạo sự cấp thiết; Xây dựng nhóm hướng dẫn; Chiến lược và tầm nhìn"],
+    ["B", "Truyền thông tầm nhìn; Trao quyền hành động; KH thắng lợi ngắn hạn"],
+    ["C", "Củng cố, thúc đẩy thay đổi; Thể chế thành văn hóa"],
+    ["D", "Tạo sự cấp thiết; Thể chế thành văn hóa"]
+  ], "A", "Bảng Lewin – Kotter: 'Làm tan băng' ↔ Tạo sự cấp thiết, Xây dựng nhóm hướng dẫn, Chiến lược và tầm nhìn; 'Dịch chuyển' ↔ Truyền thông tầm nhìn, Trao quyền hành động, KH thắng lợi ngắn hạn; 'Tái đóng băng' ↔ Củng cố thúc đẩy thay đổi, Thể chế thành văn hóa.");
+
+  q(S, "Slide 'Yêu cầu thay đổi' nêu 07 yêu cầu. Yêu cầu số 04 là gì?", [
+    ["A", "Xác lập vai trò lãnh đạo"],
+    ["B", "Tập trung vào kết quả, chứ không phải hoạt động"],
+    ["C", "Bắt đầu thay đổi từ vòng ngoài rồi tiếp tục sang các bộ phận liên quan"],
+    ["D", "Thể chế hóa thông qua các chính sách, hệ thống và cấu trúc chính thức"]
+  ], "B", "07 yêu cầu: 01 Huy động năng lực và cam kết thông qua việc xác định vấn đề của ngân hàng và đề xuất giải pháp; 02 Phát triển tầm nhìn chung về cách tổ chức và quản lý khả năng cạnh tranh; 03 Xác lập vai trò lãnh đạo; 04 Tập trung vào kết quả, chứ không phải hoạt động; 05 Bắt đầu thay đổi từ vòng ngoài rồi tiếp tục sang các bộ phận liên quan; 06 Thể chế hóa thông qua các chính sách, hệ thống và cấu trúc chính thức; 07 Kiểm soát và điều chỉnh chiến lược đáp ứng các yêu cầu đặt ra trong quá trình thay đổi.");
+
+  q(S, "Slide 'Người phản đối' đưa ra góc nhìn tích cực về những người phản đối thay đổi. Nhận định nào sau đây được nêu?", [
+    ["A", "Họ là những người có khả năng chỉ ra các nguy cơ thực sự với hệ thống"],
+    ["B", "Họ thường là những người có năng lực kém nhất"],
+    ["C", "Họ cần được loại bỏ khỏi tổ chức càng sớm càng tốt"],
+    ["D", "Họ luôn phản đối vì lý do cá nhân"]
+  ], "A", "Ba nhận định: họ có khả năng chỉ ra các nguy cơ thực sự với hệ thống; họ có năng lực phát hiện ra những thay đổi có thể phá vỡ hệ thống; họ nhạy cảm với bất cứ sự không hiểu biết hay không nhất quán của nhà lãnh đạo.");
+
+  q(S, "Theo slide 'Thay đổi và lãnh đạo', tỷ lệ đóng góp của lãnh đạo và quản lý vào sự thay đổi (theo Kotter) là:", [
+    ["A", "50% lãnh đạo – 50% quản lý"],
+    ["B", "60% lãnh đạo – 40% quản lý"],
+    ["C", "80% lãnh đạo – 20% quản lý"],
+    ["D", "20% lãnh đạo – 80% quản lý"]
+  ], "C", "Slide nêu: '80% thay đổi do sự lãnh đạo, 20% do sự quản lý – Kotter'.");
+
+  q(S, "Theo sơ đồ phân biệt LEADER và MANAGER trong tài liệu, vai trò của LEADER là:", [
+    ["A", "Duy trì hiện trạng và kiểm soát công việc"],
+    ["B", "Truyền cảm hứng và dẫn dắt sự thay đổi"],
+    ["C", "Phân bổ nguồn lực và lập ngân sách"],
+    ["D", "Xây dựng quy trình và chuẩn mực"]
+  ], "B", "Sơ đồ: LEADER – Truyền cảm hứng và dẫn dắt sự thay đổi (đi cùng đội ngũ); MANAGER – Duy trì hiện trạng và kiểm soát công việc (đứng ngoài giao việc).");
+
+  q(S, "Theo slide 'Thay đổi và lãnh đạo', thay đổi tổ chức có được nhờ vào điều gì?", [
+    ["A", "Nhờ vào sự cưỡng chế và kỷ luật"],
+    ["B", "Nhờ vào sự hy sinh và sáng tạo, chứ không phải cường chế"],
+    ["C", "Nhờ vào nguồn lực tài chính dồi dào"],
+    ["D", "Nhờ vào công nghệ hiện đại"]
+  ], "B", "Slide nêu: 'Thay đổi tổ chức nhờ vào sự hy sinh và sáng tạo, chứ không phải cường chế'; và 'Các tổ chức không vượt qua được các thách thức do thiếu những nhà lãnh đạo có thể truyền cảm hứng và thúc đẩy mọi người hành động khác đi'.");
+
+  q(S, "Đường cong phản ứng thay đổi trong tài liệu gồm bốn giai đoạn theo thứ tự nào?", [
+    ["A", "Chối bỏ → Chống đối → Bằng khoản → Cam kết"],
+    ["B", "Chống đối → Chối bỏ → Cam kết → Bằng khoản"],
+    ["C", "Bằng khoản → Chối bỏ → Chống đối → Cam kết"],
+    ["D", "Chối bỏ → Bằng khoản → Chống đối → Cam kết"]
+  ], "A", "Đường cong đi từ 'Nhu cầu có sự thay đổi' qua các giai đoạn: 1 CHỐI BỎ → 2 CHỐNG ĐỐI → 3 BẰNG KHOẢN → 4 CAM KẾT, tới 'Vị trí mong muốn'.");
+
+  q(S, "Theo đường cong phản ứng thay đổi, tại ĐIỂM ĐÁY của đường cong, tổ chức cần tập trung vào điều gì?", [
+    ["A", "Cơ cấu, kinh tế và chiến lược"],
+    ["B", "Nguồn nhân lực, năng lực và văn hóa"],
+    ["C", "Công nghệ và hệ thống"],
+    ["D", "Khách hàng và thị trường"]
+  ], "B", "Ở đáy đường cong có ghi chú: 'Tập trung vào nguồn nhân lực, năng lực và văn hóa'; trong khi phần trên của biểu đồ ghi 'Tập trung vào cơ cấu, kinh tế và chiến lược'.");
+
+  /* ============ PHẦN 4: TRÍCH DẪN & NHÂN VẬT ============ */
+  S = "d5-trich-dan";
+
+  q(S, "Câu 'Mọi sự vật đều tồn tại tại mâu thuẫn và không ngừng thay đổi. Bất cứ sự vật nào tồn tại, cũng đều tồn tại bằng cách phá bỏ một cái gì đó' là của ai?", [
+    ["A", "Heraclitus"],
+    ["B", "Herodotus – the Father of History"],
+    ["C", "Charles Darwin"],
+    ["D", "George Bernard Shaw"]
+  ], "B", "Slide trích dẫn Herodotus, được giới thiệu là 'the Father of History'.");
+
+  q(S, "Câu 'Không thể tiến bộ nếu thiếu sự thay đổi, và những ai không thể thay đổi tư duy của mình thì không thể thay đổi bất cứ cái gì' là của ai?", [
+    ["A", "George Bernard Shaw"],
+    ["B", "John F. Kennedy"],
+    ["C", "Jim Rohn"],
+    ["D", "Max De Pree"]
+  ], "A", "Slide 'Thay đổi điều gì?' trích dẫn George Bernard Shaw.");
+
+  q(S, "Câu 'Không ai tắm hai lần trên một dòng sông' thuộc về nhà tư tưởng nào và ở thời kỳ nào?", [
+    ["A", "Herodotus (484–425 TCN)"],
+    ["B", "Heraclitus (535 – 475 TCN)"],
+    ["C", "Socrates (470 – 399 TCN)"],
+    ["D", "Plato (428 – 348 TCN)"]
+  ], "B", "Slide 'Không có gì vĩnh viễn' ghi rõ: Heraclitus (535 – 475 TCN).");
+
+  q(S, "Câu nói của Charles Darwin được trích dẫn trong tài liệu là:", [
+    ["A", "Chỉ kẻ mạnh mới tồn tại"],
+    ["B", "Không phải sinh vật khoẻ nhất, to nhất, hay chạy nhanh nhất, mà chỉ sinh vật biết thích nghi mới tồn tại"],
+    ["C", "Tiến hóa là quá trình không ngừng nghỉ"],
+    ["D", "Loài nào thích nghi nhanh nhất sẽ thống trị"]
+  ], "B", "Slide 'Quy luật sinh tồn' trích dẫn Charles Darwin với nội dung này.");
+
+  q(S, "Câu 'Quyết định hôm nay trở thành chủ nhân của sự thay đổi hơn là trở thành nạn nhân của nó vào ngày mai' xuất hiện ở slide nào?", [
+    ["A", "Slide 'Chủ động'"],
+    ["B", "Slide 'Quy luật sinh tồn'"],
+    ["C", "Slide 'Bài học lớn'"],
+    ["D", "Slide 'Tính cấp thiết'"]
+  ], "A", "Đây là nội dung slide 'CHỦ ĐỘNG', đi kèm hình ảnh chiếc kéo cắt chữ PRICE thành PRIZE.");
+
+  q(S, "Câu 'Chúng ta không thể có được đèn điện nếu chúng ta mãi nuối tiếc và tìm cách cải tiến cái đèn dầu' là của ai?", [
+    ["A", "Max De Pree"],
+    ["B", "Hoàng Trung Dũng"],
+    ["C", "Jack Welch"],
+    ["D", "Claus Schwab"]
+  ], "B", "Slide 'Lãnh đạo với sự thay đổi' ghi tên tác giả câu nói này là Hoàng Trung Dũng.");
+
+  q(S, "Câu tiếng Anh 'In the end, it is important to remember that we cannot become what we need to be by remaining what we are' là của ai?", [
+    ["A", "Jim Rohn"],
+    ["B", "Peter Drucker"],
+    ["C", "Max De Pree"],
+    ["D", "John F. Kennedy"]
+  ], "C", "Slide 'Lãnh đạo với sự thay đổi' trích dẫn Max De Pree.");
+
+  q(S, "Câu 'Thay đổi là quy luật của cuộc sống. Những người chỉ nhìn thấy quá khứ hoặc hiện tại thì chắc chắn sẽ bỏ lỡ những cơ hội trong tương lai' là của ai?", [
+    ["A", "John F. Kennedy"],
+    ["B", "Peter Drucker"],
+    ["C", "Charles Darwin"],
+    ["D", "Jack Welch"]
+  ], "A", "Slide \"'Sự thay đổi' là gì?\" trích dẫn John F. Kennedy.");
+
+  q(S, "Câu 'Bất cứ tổ chức nào mà tốc độ thay đổi bên trong chậm hơn so với tốc độ thay đổi của môi trường bên ngoài, tổ chức đó đang tiến gần tới sự đào thải' là của ai?", [
+    ["A", "John Kotter"],
+    ["B", "Peter Drucker"],
+    ["C", "Jack Welch"],
+    ["D", "Richard L. Daft"]
+  ], "B", "Slide 'Tốc độ của sự thay đổi' trích dẫn Peter Drucker.");
+
+  q(S, "Ba câu hỏi chia sẻ được nêu ở đầu tài liệu (cùng hình ảnh cuốn sách của Simon Sinek) KHÔNG bao gồm câu nào?", [
+    ["A", "Tại sao tôi và tổ chức lại phải thay đổi?"],
+    ["B", "Tại sao tôi nên trở thành lãnh đạo?"],
+    ["C", "Tại sao phải vất vả học hỏi không ngừng, nhất là trong thời kỳ 4.0"],
+    ["D", "Tại sao tổ chức cần tái cơ cấu?"]
+  ], "D", "Slide 'Chia sẻ' nêu 3 câu hỏi: 01 Tại sao tôi và tổ chức lại phải thay đổi? 02 Tại sao tôi nên trở thành lãnh đạo? 03 Tại sao phải vất vả học hỏi không ngừng, nhất là trong thời kỳ 4.0.");
+
+  q(S, "Thông điệp ở slide 'Nội công – Ngoại kích' gồm hai vế nào?", [
+    ["A", "Áp lực bên ngoài và Nút thắt bên trong"],
+    ["B", "Cơ hội bên ngoài và Năng lực bên trong"],
+    ["C", "Cạnh tranh bên ngoài và Văn hóa bên trong"],
+    ["D", "Thị trường bên ngoài và Tổ chức bên trong"]
+  ], "A", "Slide 'Nội công – Ngoại kích' gồm hai mũi tên: 'ÁP LỰC BÊN NGOÀI' và 'NÚT THẮT BÊN TRONG', kèm câu 'Hãy luôn sẵn sàng thay đổi để thành công'.");
+
+
+
+  /* ============ NẠP DỮ LIỆU VÀO APP ============ */
+  var have = {};
+  D.subjects.forEach(function (s) { have[s.id] = true; });
+  SUBJ.forEach(function (s) { if (!have[s.id]) D.subjects.push(s); });
+
+  var hasBatch = D.batches.some(function (b) { return b.id === BATCH; });
+  if (!hasBatch) {
+    D.batches.push({
+      id: BATCH,
+      name: "Ôn tập Quản lý sự thay đổi",
+      note: "Trắc nghiệm Claude soạn từ tài liệu đào tạo \"Quản lý sự thay đổi\" (Kingsman – BIDV 2026)"
+    });
+  }
+
+  /* xáo vị trí đáp án đúng cho đỡ lộ quy luật */
+  var L = ["A", "B", "C", "D"];
+  QS.forEach(function (x, idx) {
+    var want = L[idx % 4];
+    if (x.a[0] === want) return;
+    var m = {};
+    x.o.forEach(function (o) { m[o[0]] = o[1]; });
+    var tmp = m[x.a[0]]; m[x.a[0]] = m[want]; m[want] = tmp;
+    x.o = L.map(function (k) { return [k, m[k]]; });
+    x.a = [want];
+  });
+
+  var next = 0;
+  D.questions.forEach(function (x) { if (typeof x.i === "number" && x.i >= next) next = x.i + 1; });
+  QS.forEach(function (x) { x.i = next++; D.questions.push(x); });
+
+  console.log("[Quản lý sự thay đổi] Đã nạp " + QS.length + " câu hỏi.");
+})();
+
+</script>
 <script>
 (function(){
 "use strict";
